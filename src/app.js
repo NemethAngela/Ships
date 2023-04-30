@@ -14,29 +14,30 @@ const doc = {
 
 const state = { // host neveket itt tároljuk
     host: 'http://localhost:8000/',
-    todos: []
+    ships: []
 };
 
-getTodos();
-function getTodos() { // url összeáállítása
-    let url = state.host + 'todos'  //ez a végpont: todos
+getShips();
+function getShips() { // url összeáállítása
+    let url = state.host + 'ships'  //ez a végpont: todos
     fetch(url)
     .then(response => response.json())    //akkor kell valamit tenni
     .then(result => {
         console.log(result);
-        state.todos = result;
+        state.ships = result;
         render();
     });
 }
 
 function render() { //weblapra rendereli, az összes tudo-t be kell járni forEach-el(tennivalókat)
     let rows = '';
-    state.todos.forEach( (todo) => {
+    state.ships.forEach( (todo) => {
         rows += `
             <tr>
-                <td>${todo.id}</td>
-                <td>${todo.name}</td>
-                <td>${todo.ready}</td>
+                <td>${ships.name}</td>
+                <td>${ships.name}</td>
+                <td>${ships.ready}</td>
+                <td>${ships.ready}</td>
             </tr>
         `;
         console.log(todo.name); // kiíródnak a nevek
