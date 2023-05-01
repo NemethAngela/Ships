@@ -19,9 +19,9 @@ const state = { // host neveket itt tároljuk
 
 getShips();
 function getShips() { // url összeáállítása
-    let url = state.host + 'ships'  //ez a végpont: todos
+    let url = state.host + 'ships'  //ez a végpont: ships
     fetch(url)
-    .then(response => response.json())    //akkor kell valamit tenni
+    .then(response => response.json())    
     .then(result => {
         console.log(result);
         state.ships = result;
@@ -29,18 +29,19 @@ function getShips() { // url összeáállítása
     });
 }
 
-function render() { //weblapra rendereli, az összes tudo-t be kell járni forEach-el(tennivalókat)
+function render() { //weblapra rendereli, az összes ships-t be kell járni forEach-el(tennivalókat)
     let rows = '';
-    state.ships.forEach( (todo) => {
+    state.ships.forEach( (ships) => {
         rows += `
             <tr>
                 <td>${ships.name}</td>
-                <td>${ships.name}</td>
-                <td>${ships.ready}</td>
-                <td>${ships.ready}</td>
+                <td>${ships.length}</td>
+                <td>${ships.price}</td>
+                <td>${ships.person}</td>
+                <td>${ships.trailer}</td>
             </tr>
         `;
-        console.log(todo.name); // kiíródnak a nevek
+        console.log(ships.name); // kiíródnak a nevek
     });
     doc.tbody.innerHTML = rows;
 }
